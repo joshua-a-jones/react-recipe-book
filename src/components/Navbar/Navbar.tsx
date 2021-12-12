@@ -6,7 +6,7 @@ export default function Navbar() {
     return (
         <div className='navbar'>
             <nav>
-                <Link to='/'>
+                <Link to='/' className='logo'>
                     <h1>My Recipe Book</h1>
                 </Link>
                 <Link to='/create'>Create Recipe</Link>
