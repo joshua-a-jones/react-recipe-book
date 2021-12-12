@@ -7,7 +7,7 @@ export interface ReturnedData<T> {
     loading: boolean;
 }
 
-export const useAxios = <FetchedData>(url: string): ReturnedData<FetchedData> => {
+export const useAxiosGet = <FetchedData>(url: string): ReturnedData<FetchedData> => {
     
     axios.defaults.baseURL = 'localhost:3000';
     
