@@ -11,7 +11,9 @@ export default function RecipeList(props: RecipeListProps) {
 
     const { recipes } = props;
 
-
+    if (recipes.length === 0) {
+        return <div className='error'>No Recipes Found.</div>
+    }
 
     return (
         <div className='recipe-list'>
