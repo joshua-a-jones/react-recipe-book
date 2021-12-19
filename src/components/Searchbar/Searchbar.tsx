@@ -1,5 +1,5 @@
 import './Searchbar.css';
-import React, { useState, FormEvent } from 'react'
+import { useState, FormEvent } from 'react'
 import { useHistory } from 'react-router-dom';
 
 export default function Searchbar() {
@@ -10,6 +10,7 @@ export default function Searchbar() {
         e.preventDefault();
 
         history.push(`/search?q=${encodeURIComponent(searchText)}`)
+        setSearchText('');
     }
     return (
         <div className="searchbar">

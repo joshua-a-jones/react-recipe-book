@@ -1,17 +1,21 @@
 import './Home.css';
-import React from 'react'
-import { useAxiosGet } from '../../api/hooks/useAxios';
+import { useAxios } from '../../api/hooks/useAxios';
 import { IRecipe } from '../../api/recipes/Recipe';
 import RecipeList from '../../components/RecipeList/RecipeList';
 
 
 export default function Home() {
+    const {responseData: recipes, isError, isLoading} = useAxios<IRecipe[]>(
+        {
+            method: 'get',
+            url: 'http://localhost:3000/recipes',
+        }
+    );
 
-    const {data: recipes, error, loading} = useAxiosGet<IRecipe[]>('http://localhost:3000/recipes');
     return (
         <div>
-            {loading && <p className='loading'>Loading recipes...</p>}
-            {error && <p className='error'>{error}</p>}
+            {isLoading && <p className='loading'>Loading recipes...</p>}
+            {isError && <p className='error'>'Failed To Load Recipes'</p>}
             {recipes && <RecipeList recipes={recipes} />}
         </div>
     )

@@ -1,7 +1,6 @@
 import './Search.css';
-import React from 'react'
 import { useLocation } from 'react-router-dom';
-import { useAxiosGet } from '../../api/hooks/useAxios';
+import { useAxios } from '../../api/hooks/useAxios';
 import { IRecipe } from '../../api/recipes/Recipe';
 import RecipeList from '../../components/RecipeList/RecipeList';
 
@@ -12,14 +11,17 @@ export default function Search() {
 
     const url = 'http://localhost:3000/recipes?q=' + query;
 
-    const { data, loading, error } = useAxiosGet<IRecipe[]>(url)
+    const {responseData, isLoading, isError} = useAxios<IRecipe[]>({
+        method: 'get',
+        url: url
+    })
 
     return (
         <div>
             <h2 className='page-title'>Recipes including "{query}"</h2>
-            {error && <p className='error'>{error}</p>}
-            {loading && <p className='loading'>Loading...</p>}
-            {data && <RecipeList recipes={data}/>}
+            {isError && <p className='error'>Could Not Load Recipes</p>}
+            {isLoading && <p className='loading'>Loading...</p>}
+            {responseData && <RecipeList recipes={responseData}/>}
         </div>
     )
 }
