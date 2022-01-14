@@ -1,26 +1,26 @@
 {
-    "recipes": [
-        {
-            "id":"1",
-            "title":"Scrambled Eggs",
-            "ingredients": [
-                "2 eggs",
-                "8g butter",
-                "pinch of salt",
-                "ground black pepper"
-            ],
-            "method": "preheat a non-stick skillet on medium-low heat. While the skillet preheats, crack the two eggs into a mixing bowl and whisk until eggs are completely mixed and slightly frothy. Add the freshly ground black pepper to the eggs. Pour the eggs into the pre-heated skillet and slowly mix with a spatula (mixing the eggs faster will lead to a thinner, creamier finished texture, while mixing slowly will produce larger firmer curds). When the eggs are nearly cooked through, take the pan off the heat and add salt to taste. Serve immediately.",
-            "cookingTime": "15 minutes"
-        },
-        {
-            "id":"2",
-            "title":"Poached Eggs",
-            "ingredients": [
-                "1 eggs",
-                "pinch of salt"
-            ],
-            "method": "Boil a pot of water. Crack the egg into the boiling water and cook until done.",
-            "cookingTime": "10 minutes"
-        }
-    ]
+  "recipes": [
+    {
+      "id": "1",
+      "title": "Scrambled Eggs",
+      "ingredients": [
+        "2 eggs",
+        "8g butter",
+        "pinch of salt",
+        "ground black pepper"
+      ],
+      "method": "Preheat a non-stick skillet on medium-low heat. While the skillet preheats, crack the two eggs into a mixing bowl and whisk until eggs are completely mixed and slightly frothy. Add the freshly ground black pepper to the eggs. Pour the eggs into the pre-heated skillet and slowly mix with a spatula (mixing the eggs faster will lead to a thinner, creamier finished texture, while mixing slowly will produce larger firmer curds). When the eggs are nearly cooked through, take the pan off the heat and add salt to taste. Serve immediately.",
+      "cookingTime": "15 minutes"
+    },
+    {
+      "id": "2",
+      "title": "Poached Eggs",
+      "ingredients": [
+        "1 eggs",
+        "pinch of salt"
+      ],
+      "method": "Boil a pot of water. Using a large spoon, swirl the water to create a vortex; this will help keep the egg from falling apart. Crack the egg carefully into the center of the vortex.",
+      "cookingTime": "10 minutes"
+    }
+  ]
 }

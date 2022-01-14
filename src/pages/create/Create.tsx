@@ -3,6 +3,7 @@ import './Create.css';
 import { useAxiosPost } from '../../api/hooks/useAxios';
 import { IRecipe } from '../../api/recipes/Recipe';
 import { useHistory } from 'react-router-dom';
+import { useTheme } from '../../api/hooks/useTheme';
 
 export default function Create() {
 
@@ -11,6 +12,7 @@ export default function Create() {
     const [cookingTime, setCookingTime] = useState('');
     const [newIngredient, setNewIngredient] = useState('');
     const [ingredients, setIngredients] = useState<string[]>([''])
+    const { themeStyle } = useTheme()
     const ingredientInput = useRef<HTMLInputElement>(null);
     const {postData, error, isLoading} = useAxiosPost<IRecipe>('http://localhost:3000/recipes');
     const history = useHistory();
@@ -56,7 +58,7 @@ export default function Create() {
     }, [isLoading])
 
     return (
-        <div className='create'>
+        <div className={`create ${themeStyle.mode}`}>
             <h2 className='page-title'>Add a New Recipe</h2>
             <form onSubmit={handleSubmit}>
                 <label >
@@ -77,7 +79,7 @@ export default function Create() {
                             onChange={(e) => setNewIngredient(e.target.value)}
                             ref={ingredientInput}
                             />
-                        <button onClick={handleAdd} className='button'>add</button>
+                        <button onClick={handleAdd} className='button'>Add</button>
                     </div>
                 </label>
                 <p>

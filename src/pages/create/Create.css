@@ -53,3 +53,21 @@
 .create em:last-child::after {
     content: "";
 }
+
+
+/*Dark Mode styles */
+
+.create.dark h2 {
+    color: white;
+}
+
+.create.dark p,
+.create.dark span {
+    color: #e4e4e4;
+}
+
+.create.dark textarea,
+.create.dark input {
+    background: #555;
+    color: #e4e4e4;
+}

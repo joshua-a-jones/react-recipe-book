@@ -2,13 +2,13 @@ import './Navbar.css';
 import React from 'react'
 import { Link } from 'react-router-dom'
 import  Searchbar from '../Searchbar/Searchbar'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useTheme } from '../../api/hooks/useTheme';
 
 export default function Navbar() {
-    const { state } = useTheme();
 
     return (
-        <div className='navbar' style={{background: state.color}}>
+        <div className='navbar' >
             <nav>
                 <Link to='/' className='logo'>
                     <h1>My Recipe Book</h1>

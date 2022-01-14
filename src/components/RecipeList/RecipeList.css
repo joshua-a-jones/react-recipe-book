@@ -40,3 +40,20 @@
     margin: 20px 0;
     line-height: 1.5em;
 }
+
+
+/* Dark mode styles */
+
+.recipe-list .card.dark {
+    background: #555;
+}
+
+.recipe-list .card.dark p,
+.recipe-list .card.dark h3,
+.recipe-list .card.dark div {
+    color: #e4e4e4;
+}
+
+.error.dark {
+    color: #e4e4e4;
+}

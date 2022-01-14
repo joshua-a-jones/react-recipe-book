@@ -2,9 +2,10 @@ import './Recipe.css';
 import { useParams } from 'react-router';
 import { useAxios } from '../../api/hooks/useAxios';
 import { IRecipe } from '../../api/recipes/Recipe';
+import { useTheme } from '../../api/hooks/useTheme';
 
 export default function Recipe() {
-
+    const { themeStyle } = useTheme()
     const { id } = useParams<{id?: string}>();
 
     const {responseData: recipe, isLoading, isError} = useAxios<IRecipe>({
@@ -14,7 +15,7 @@ export default function Recipe() {
 
 
     return (
-        <div className='recipe'>
+        <div className={`recipe ${themeStyle.mode}`}>
             {isLoading && <p className='loading'>Loading...</p>}
             {isError && <p className='error'>Could Not Load Recipe</p>}
             {recipe && (
