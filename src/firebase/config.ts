@@ -1,19 +1,19 @@
 import firebase from "firebase";
-import 'firebase/firestore';
+import "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAdE17F_slxEKmyCAnMYAB8Ew0LUt_Pcjs",
-    authDomain: "recipe-library-c7266.firebaseapp.com",
-    projectId: "recipe-library-c7266",
-    storageBucket: "recipe-library-c7266.appspot.com",
-    messagingSenderId: "538942028195",
-    appId: "1:538942028195:web:85de6989b85b826b6a4216"
-  };
+  apiKey: "AIzaSyCcmMcykHSFy1vTLOhT9NmktXHZB049tiw",
+  authDomain: "recipe-book-project-85654.firebaseapp.com",
+  projectId: "recipe-book-project-85654",
+  storageBucket: "recipe-book-project-85654.appspot.com",
+  messagingSenderId: "410513841063",
+  appId: "1:410513841063:web:c4b3c07129c6e0f88c3482",
+};
 
-  //init firebase
-  firebase.initializeApp(firebaseConfig);
+//init firebase
+firebase.initializeApp(firebaseConfig);
 
-  //init services
-  const projectFirestore = firebase.firestore();
+//init services
+const projectFirestore = firebase.firestore();
 
-  export { projectFirestore }
+export { projectFirestore };

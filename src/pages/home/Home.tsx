@@ -1,22 +1,45 @@
-import './Home.css';
-import { useAxios } from '../../api/hooks/useAxios';
-import { IRecipe } from '../../api/recipes/Recipe';
-import RecipeList from '../../components/RecipeList/RecipeList';
-
+import "./Home.css";
+import { useAxios } from "../../api/hooks/useAxios";
+import { IRecipe } from "../../api/recipes/Recipe";
+import RecipeList from "../../components/RecipeList/RecipeList";
+import { projectFirestore } from "../../firebase/config";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-    const {responseData: recipes, isError, isLoading} = useAxios<IRecipe[]>(
-        {
-            method: 'get',
-            url: 'http://localhost:3000/recipes',
-        }
-    );
+  // const {responseData: recipes, isError, isLoading} = useAxios<IRecipe[]>(
+  //     {
+  //         method: 'get',
+  //         url: 'http://localhost:3000/recipes',
+  //     }
+  // );
 
-    return (
-        <div>
-            {isLoading && <p className='loading'>Loading recipes...</p>}
-            {isError && <p className='error'>'Failed To Load Recipes'</p>}
-            {recipes && <RecipeList recipes={recipes} />}
-        </div>
-    )
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIserror] = useState(false);
+  const [recipes, setRecipes] = useState<IRecipe[] | undefined>();
+
+  useEffect(() => {
+    setIsLoading(true);
+    projectFirestore
+      .collection("recipes")
+      .get()
+      .then((snapshot) => {
+        if (snapshot.empty) {
+          setIserror(true);
+        } else {
+          let results: IRecipe[] = [];
+          snapshot.docs.forEach((doc) => {
+            results.push({ id: doc.id, ...doc.data() } as IRecipe);
+          });
+          setIsLoading(false);
+          setRecipes(results);
+        }
+      });
+  }, []);
+  return (
+    <div>
+      {isLoading && <p className="loading">Loading recipes...</p>}
+      {isError && <p className="error">'Failed To Load Recipes'</p>}
+      {recipes && <RecipeList recipes={recipes} />}
+    </div>
+  );
 }
