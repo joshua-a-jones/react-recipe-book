@@ -1,18 +1,10 @@
 import "./Home.css";
-//import { useAxios } from "../../api/hooks/useAxios";
 import { IRecipe } from "../../api/recipes/Recipe";
 import RecipeList from "../../components/RecipeList/RecipeList";
 import { projectFirestore } from "../../firebase/config";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  // const {responseData: recipes, isError, isLoading} = useAxios<IRecipe[]>(
-  //     {
-  //         method: 'get',
-  //         url: 'http://localhost:3000/recipes',
-  //     }
-  // );
-
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIserror] = useState(false);
   const [recipes, setRecipes] = useState<IRecipe[] | undefined>();

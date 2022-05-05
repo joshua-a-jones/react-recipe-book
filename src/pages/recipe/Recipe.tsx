@@ -1,6 +1,5 @@
 import "./Recipe.css";
 import { useParams } from "react-router";
-// import { useAxios } from '../../api/hooks/useAxios';
 import { IRecipe } from "../../api/recipes/Recipe";
 import { useTheme } from "../../api/hooks/useTheme";
 import { projectFirestore } from "../../firebase/config";
@@ -9,11 +8,6 @@ import { useState, useEffect } from "react";
 export default function Recipe() {
   const { themeStyle } = useTheme();
   const { id } = useParams<{ id?: string }>();
-
-  // const {responseData: recipe, isLoading, isError} = useAxios<IRecipe>({
-  //     method: 'get',
-  //     url: `http://localhost:3000/recipes/${id}`
-  // })
 
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIserror] = useState(false);

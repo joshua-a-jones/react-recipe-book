@@ -1,6 +1,5 @@
-import React, { FormEvent, useState, useRef, useEffect } from "react";
+import React, { FormEvent, useState, useRef } from "react";
 import "./Create.css";
-//import { useAxiosPost } from '../../api/hooks/useAxios';
 import { IRecipe } from "../../api/recipes/Recipe";
 import { useHistory } from "react-router-dom";
 import { useTheme } from "../../api/hooks/useTheme";
@@ -14,7 +13,6 @@ export default function Create() {
   const [ingredients, setIngredients] = useState<string[]>([""]);
   const { themeStyle } = useTheme();
   const ingredientInput = useRef<HTMLInputElement>(null);
-  //const {postData, error, isLoading} = useAxiosPost<IRecipe>('http://localhost:3000/recipes');
   const history = useHistory();
   const [isError, setIserror] = useState(false);
 
@@ -28,7 +26,6 @@ export default function Create() {
       ingredients,
     };
 
-    //postData(recipe);
     try {
       await projectFirestore.collection("recipes").add(recipe);
       setIserror(false);
