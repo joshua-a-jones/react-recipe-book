@@ -1,8 +1,13 @@
 .searchbar form {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .searchbar input {
-    margin-left: 10px;
+  margin-left: 10px;
+}
+
+.searchbar.dark input {
+  background: #777;
+  color: #fff;
 }
