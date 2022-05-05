@@ -1,5 +1,5 @@
 import "./Home.css";
-import { useAxios } from "../../api/hooks/useAxios";
+//import { useAxios } from "../../api/hooks/useAxios";
 import { IRecipe } from "../../api/recipes/Recipe";
 import RecipeList from "../../components/RecipeList/RecipeList";
 import { projectFirestore } from "../../firebase/config";
@@ -25,6 +25,7 @@ export default function Home() {
       .then((snapshot) => {
         if (snapshot.empty) {
           setIserror(true);
+          setIsLoading(false);
         } else {
           let results: IRecipe[] = [];
           snapshot.docs.forEach((doc) => {
@@ -33,6 +34,10 @@ export default function Home() {
           setIsLoading(false);
           setRecipes(results);
         }
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setIserror(true);
       });
   }, []);
   return (
