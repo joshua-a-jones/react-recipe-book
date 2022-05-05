@@ -4,6 +4,8 @@ import { IRecipe } from "../../api/recipes/Recipe";
 import { useTheme } from "../../api/hooks/useTheme";
 import { projectFirestore } from "../../firebase/config";
 import { useState, useEffect } from "react";
+import EditRecipeForm from "../../components/EditRecipeForm/EditRecipeForm";
+import { MdEdit } from "react-icons/md";
 
 export default function Recipe() {
   const { themeStyle } = useTheme();
@@ -11,15 +13,16 @@ export default function Recipe() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIserror] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const [recipe, setRecipe] = useState<IRecipe | undefined>();
 
   useEffect(() => {
     setIsLoading(true);
-    projectFirestore
+
+    const unsub = projectFirestore
       .collection("recipes")
       .doc(id)
-      .get()
-      .then((doc) => {
+      .onSnapshot((doc) => {
         if (!doc.exists) {
           setIserror(true);
           setIsLoading(false);
@@ -27,19 +30,27 @@ export default function Recipe() {
           setRecipe({ id, ...doc.data() } as IRecipe);
           setIsLoading(false);
         }
-      })
-      .catch((err) => {
-        setIsLoading(false);
-        setIserror(true);
       });
+
+    return unsub;
   }, [id]);
+
+  const onSaveEdit = (newRecipe: IRecipe) => {
+    projectFirestore.collection("recipes").doc(id).update(newRecipe);
+    setIsEditing(false);
+  };
+
+  const onCanceledit = () => {
+    setIsEditing(false);
+  };
 
   return (
     <div className={`recipe ${themeStyle.mode}`}>
       {isLoading && <p className="loading">Loading...</p>}
       {isError && <p className="error">Could Not Load Recipe</p>}
-      {recipe && (
+      {recipe && !isEditing && (
         <>
+          <MdEdit className="edit-button" onClick={() => setIsEditing(true)} />
           <h2 className="page-title">{recipe.title}</h2>
           <p>{recipe.cookingTime}</p>
           <ul>
@@ -49,6 +60,13 @@ export default function Recipe() {
           </ul>
           <p className="method">{recipe.method}</p>
         </>
+      )}
+      {isEditing && recipe && (
+        <EditRecipeForm
+          oldRecipe={recipe}
+          onSave={onSaveEdit}
+          onCancel={onCanceledit}
+        />
       )}
     </div>
   );

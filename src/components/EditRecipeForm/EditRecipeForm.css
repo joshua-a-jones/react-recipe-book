@@ -1,0 +1,63 @@
+.title-input {
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+.cooking-time-input {
+  text-align: center;
+  font-size: 1em;
+}
+
+.method-input {
+  text-align: left;
+  line-height: 1.5em;
+  margin-top: 1em;
+  padding: 1em;
+  overflow: auto;
+  max-width: 100%;
+}
+
+.ingredients-input {
+  text-align: center;
+}
+
+.button-container {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.button {
+  display: block;
+  width: 120px;
+  font-size: 1em;
+  color: #fff;
+  padding: 8px 20px;
+  border: 0;
+  border-radius: 4px;
+  background-color: #58249c;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 20px auto;
+}
+
+.button.cancel {
+  background-color: #f34;
+}
+
+.button.save {
+  background-color: green;
+}
+
+/* dark mode styles*/
+
+input.dark,
+textarea.dark {
+  background: #555;
+  color: #e4e4e4;
+}

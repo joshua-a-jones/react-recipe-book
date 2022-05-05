@@ -1,49 +1,61 @@
 .recipe {
-    margin: 40px auto;
-    text-align: center;
-    background: #fff;
-    padding: 40px;
-    box-sizing: border-box;
-    max-width: 1200px;
+  margin: 40px auto;
+  text-align: center;
+  background: #fff;
+  padding: 40px;
+  box-sizing: border-box;
+  max-width: 1200px;
+  position: relative;
 }
 
 .recipe ul {
-    display: flex;
-    padding: 0;
-    justify-content: center;
-    margin-top: 0;
+  display: flex;
+  padding: 0;
+  justify-content: center;
+  margin-top: 0;
 }
 
 .recipe li {
-    list-style-type: none;
-    margin-right: 10px;
-    color: #777;
+  list-style-type: none;
+  margin-right: 10px;
+  color: #777;
 }
 
 .recipe li::after {
-    content: ",";
+  content: ",";
 }
 
 .recipe li:last-child::after {
-    content: ".";
+  content: ".";
 }
 
 .method {
-    text-align: left;
-    line-height: 1.5em;
+  text-align: left;
+  line-height: 1.5em;
 }
 
+.edit-button {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  opacity: 0.6;
+}
+
+.edit-button:hover {
+  cursor: pointer;
+  opacity: 1;
+}
 
 /* Dark mode styles */
 .recipe.dark {
-    background: #555;
-    color: #e4e4e4;
+  background: #555;
+  color: #e4e4e4;
 }
 
-.recipe.dark h2  {
-    color: #fff;
+.recipe.dark h2 {
+  color: #fff;
 }
 
 .recipe.dark li {
-    color: #999;
+  color: #999;
 }

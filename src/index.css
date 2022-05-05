@@ -1,12 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800&family=Sail&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800&family=Sail&display=swap");
 
 :root {
   --main-color: #333;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
-  
 }
 
 body {
@@ -17,11 +18,15 @@ body {
   color: var(--main-color);
 }
 
-h1,h2,h3,p {
+h1,
+h2,
+h3,
+p {
   margin: 0;
 }
 
-input, textarea {
+input,
+textarea {
   color: var(--main-color);
   padding: 8px;
   font-size: 1em;
@@ -39,7 +44,13 @@ input, textarea {
   color: var(--main-color);
 }
 
-.loading, .error {
+.loading,
+.error {
   text-align: center;
   margin: 40px auto;
+}
+
+.h-stack {
+  display: flex;
+  align-items: center;
 }
