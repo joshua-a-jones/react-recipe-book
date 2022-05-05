@@ -11,10 +11,8 @@ export default function Home() {
 
   useEffect(() => {
     setIsLoading(true);
-    projectFirestore
-      .collection("recipes")
-      .get()
-      .then((snapshot) => {
+    const unsub = projectFirestore.collection("recipes").onSnapshot(
+      (snapshot) => {
         if (snapshot.empty) {
           setIserror(true);
           setIsLoading(false);
@@ -26,11 +24,14 @@ export default function Home() {
           setIsLoading(false);
           setRecipes(results);
         }
-      })
-      .catch((err) => {
-        setIsLoading(false);
+      },
+      (error) => {
         setIserror(true);
-      });
+        setIsLoading(false);
+      }
+    );
+
+    return () => unsub();
   }, []);
   return (
     <div>

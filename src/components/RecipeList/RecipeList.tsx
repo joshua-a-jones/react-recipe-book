@@ -1,34 +1,50 @@
-import './RecipeList.css'
-import React from 'react'
-import { Link } from 'react-router-dom';
-import { IRecipe } from '../../api/recipes/Recipe'
-import { useTheme } from '../../api/hooks/useTheme';
+import "./RecipeList.css";
+import React from "react";
+import { Link } from "react-router-dom";
+import { IRecipe } from "../../api/recipes/Recipe";
+import { useTheme } from "../../api/hooks/useTheme";
+import { MdDelete } from "react-icons/md";
+import { projectFirestore } from "../../firebase/config";
 
 export interface RecipeListProps {
-    recipes: IRecipe[];
+  recipes: IRecipe[];
 }
 
 export default function RecipeList(props: RecipeListProps) {
-    const { themeStyle } = useTheme()
-    const { recipes } = props;
+  const { themeStyle } = useTheme();
+  const { recipes } = props;
 
-    if (recipes.length === 0) {
-        return <div className={`error ${themeStyle.mode}`}>No Recipes Found.</div>
+  if (recipes.length === 0) {
+    return <div className={`error ${themeStyle.mode}`}>No Recipes Found.</div>;
+  }
+
+  const handleDelete = (id: string | undefined) => {
+    try {
+      projectFirestore.collection("recipes").doc(id).delete();
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    return (
-        <div className='recipe-list'>
-            {recipes.map((recipe) => {
-                return(
-                    <Link key={recipe.id} to={`/recipes/${recipe.id}`}>
-                        <div  className={`card ${themeStyle.mode}`}>
-                            <h3>{recipe.title}</h3>
-                            <p>{recipe.cookingTime}</p>
-                            <div>{recipe.method.substring(0,100) + '...'}</div>
-                        </div>
-                    </Link>
-                )
-            })}
-        </div>
-    )
+  return (
+    <div className="recipe-list">
+      {recipes.map((recipe) => {
+        return (
+          <React.Fragment key={recipe.id}>
+            <div className={`card ${themeStyle.mode}`}>
+              <Link to={`/recipes/${recipe.id}`}>
+                <h3>{recipe.title}</h3>
+                <p>{recipe.cookingTime}</p>
+                <div>{recipe.method.substring(0, 100) + "..."}</div>
+              </Link>
+              <MdDelete
+                className={"delete-button"}
+                onClick={() => handleDelete(recipe.id)}
+              />
+            </div>
+          </React.Fragment>
+        );
+      })}
+    </div>
+  );
 }
