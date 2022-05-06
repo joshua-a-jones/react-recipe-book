@@ -37,7 +37,8 @@ export default function Search() {
             setMatchingRecipes(
               results.filter(
                 (recipe) =>
-                  recipe.title.includes(query) || recipe.method.includes(query)
+                  recipe.title.toLowerCase().includes(query.toLowerCase()) ||
+                  recipe.method.toLowerCase().includes(query.toLowerCase())
               )
             );
           }
