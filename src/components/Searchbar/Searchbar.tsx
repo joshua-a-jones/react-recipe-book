@@ -2,6 +2,7 @@ import "./Searchbar.css";
 import { useState, FormEvent } from "react";
 import { useHistory } from "react-router-dom";
 import { useTheme } from "../../api/hooks/useTheme";
+import { MdSearch } from "react-icons/md";
 
 export default function Searchbar() {
   const [searchText, setSearchText] = useState("");
@@ -24,6 +25,9 @@ export default function Searchbar() {
           onChange={(e) => setSearchText(e.target.value)}
           value={searchText}
         />
+        <button className="search-button">
+          <MdSearch className="search-icon" />
+        </button>
       </form>
     </div>
   );
