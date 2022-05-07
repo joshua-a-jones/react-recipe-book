@@ -1,35 +1,37 @@
 .title-input {
   display: block;
   font-size: 1.5em;
-  margin-top: 0.83em;
-  margin-bottom: 0.83em;
   margin-left: 0;
   margin-right: 0;
   font-weight: bold;
   text-align: center;
+  margin-top: 1em;
 }
 
 .cooking-time-input {
   text-align: center;
   font-size: 1em;
+  margin-top: 1em;
 }
 
 .method-input {
   text-align: left;
   line-height: 1.5em;
-  margin-top: 1em;
   padding: 1em;
   overflow: auto;
   max-width: 100%;
+  margin-top: 1em;
 }
 
 .ingredients-input {
   text-align: center;
+  margin-top: 1em;
 }
 
 .button-container {
-  width: 300px;
+  max-width: 300px;
   margin: 0 auto;
+  display: flex;
 }
 
 .button {
@@ -60,4 +62,14 @@ input.dark,
 textarea.dark {
   background: #555;
   color: #e4e4e4;
+}
+
+@media only screen and (max-width: 405px) {
+  .button-container {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .button {
+    margin: 10px 0 0 0;
+  }
 }
