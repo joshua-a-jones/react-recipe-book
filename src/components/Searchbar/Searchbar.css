@@ -24,7 +24,7 @@
 
 .search-icon {
   color: grey;
-  scale: 2;
+  font-size: 2em;
 }
 
 .search-button:hover {
