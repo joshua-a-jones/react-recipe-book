@@ -68,7 +68,7 @@ export default function Create() {
       )}
 
       <h2 className="page-title">Add a New Recipe</h2>
-      <form onSubmit={handleSubmit}>
+      <form className="edit-recipe-form" onSubmit={handleSubmit}>
         <label>
           <span>Recipe Title:</span>
           <input

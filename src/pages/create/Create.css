@@ -1,73 +1,111 @@
 .create {
-    color: #555;
-    max-width: 480px;
-    margin: 60px auto;
+  color: #555;
+  max-width: 480px;
+  margin: 60px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-recipe-form {
+  display: flex;
+  flex-direction: column;
 }
 
 .create label span {
-    display: block;
-    margin: 20px 0 8px;
+  display: block;
+  margin: 20px 0 8px 0;
 }
 
-.create input[type=number] {
-    max-width: 100px;
+.create input[type="number"] {
+  max-width: 100px;
 }
 
 .create p {
-    margin-top: 10px;
-    font-size: 0.8em;
+  margin-top: 10px;
+  font-size: 0.8em;
 }
 
 .create button {
-    display: block;
-    width: 120px;
-    font-size: 1em;
-    color: #fff;
-    padding: 8px 20px ;
-    border: 0;
-    border-radius: 4px;
-    background-color: #58249c;
-    cursor: pointer;
-    text-decoration: none;
-    margin: 20px auto;
+  display: block;
+  width: 120px;
+  font-size: 1em;
+  color: #fff;
+  padding: 8px 20px;
+  border: 0;
+  border-radius: 4px;
+  background-color: #58249c;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 20px auto;
 }
 
 .ingredients {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .ingredients button {
-    margin: 0 0 0 10px;
+  margin: 0 0 0 10px;
 }
 
 .create em:hover {
-    cursor: pointer;
-    text-decoration: line-through;
+  cursor: pointer;
+  text-decoration: line-through;
 }
 
 .create em::after {
-    content: ", ";
+  content: ", ";
 }
 
 .create em:last-child::after {
-    content: "";
+  content: "";
 }
-
 
 /*Dark Mode styles */
 
 .create.dark h2 {
-    color: white;
+  color: white;
 }
 
 .create.dark p,
 .create.dark span {
-    color: #e4e4e4;
+  color: #e4e4e4;
 }
 
 .create.dark textarea,
 .create.dark input {
-    background: #555;
-    color: #e4e4e4;
+  background: #555;
+  color: #e4e4e4;
+}
+
+@media only screen and (max-width: 600px) {
+  .create {
+    margin: 2.5% auto;
+    padding: 0 5px 0 5px;
+  }
+  .create input,
+  .create textarea {
+    max-width: 95%;
+  }
+
+  .edit-recipe-form {
+    padding-left: 5%;
+    padding-right: 0%;
+  }
+
+  .ingredients {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 4.25em;
+  }
+
+  .ingredients .button {
+    margin-left: 0;
+  }
+
+  .page-title {
+    margin: 10px auto;
+  }
 }
