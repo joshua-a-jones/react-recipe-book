@@ -12,8 +12,10 @@ export default function Searchbar() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    history.push(`/search?q=${encodeURIComponent(searchText)}`);
-    setSearchText("");
+    if (searchText !== "") {
+      history.push(`/search?q=${encodeURIComponent(searchText)}`);
+      setSearchText("");
+    }
   };
   return (
     <div className={`searchbar ${themeStyle.mode}`}>
