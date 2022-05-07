@@ -59,3 +59,9 @@
 .recipe.dark li {
   color: #999;
 }
+
+@media only screen and (max-width: 1200px) {
+  .recipe {
+    max-width: 95%;
+  }
+}
