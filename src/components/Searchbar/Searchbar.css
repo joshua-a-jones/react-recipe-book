@@ -25,8 +25,14 @@
 .search-icon {
   color: grey;
   font-size: 2em;
+  position: relative;
+  top: 2px;
 }
 
 .search-button:hover {
   cursor: pointer;
+}
+
+.searchbar.dark .search-icon {
+  color: #fff;
 }
