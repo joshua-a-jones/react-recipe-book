@@ -1,5 +1,5 @@
 .recipe {
-  margin: 40px auto;
+  margin: 40px 40px;
   text-align: center;
   background: #fff;
   padding: 40px;
@@ -60,8 +60,8 @@
   color: #999;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (min-width: 1200px) {
   .recipe {
-    max-width: 95%;
+    margin: 40px auto;
   }
 }
