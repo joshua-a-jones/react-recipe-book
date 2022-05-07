@@ -29,3 +29,32 @@
   background: #fff;
   color: #333;
 }
+
+.mobile-nav {
+  display: none;
+}
+
+.hamburger-menu {
+  display: none;
+}
+
+@media only screen and (max-width: 940px) {
+  .mobile-nav {
+    display: flex;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    justify-content: space-between;
+    height: 110px;
+    align-items: center;
+    border-top: 2px solid #fff;
+    padding-top: 20px;
+  }
+}
