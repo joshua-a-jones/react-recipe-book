@@ -30,31 +30,30 @@
   color: #333;
 }
 
-.mobile-nav {
-  display: none;
+.nav-controls {
+  display: flex;
+  align-items: center;
+  width: 130px;
+  justify-content: space-between;
+}
+
+.hamburger-button:hover {
+  cursor: pointer;
 }
 
 .hamburger-menu {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  justify-content: space-between;
+  height: 110px;
+  align-items: center;
+  border-top: 2px solid #fff;
+  padding-top: 20px;
 }
 
-@media only screen and (max-width: 940px) {
-  .mobile-nav {
-    display: flex;
-  }
-
-  .desktop-nav {
-    display: none;
-  }
-
-  .hamburger-menu {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    justify-content: space-between;
-    height: 110px;
-    align-items: center;
-    border-top: 2px solid #fff;
-    padding-top: 20px;
-  }
+.login-button:hover,
+.logout-button:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
