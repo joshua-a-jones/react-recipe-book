@@ -1,34 +1,37 @@
-import React from 'react';
-import './App.css';
-import { Route, Switch, BrowserRouter } from 'react-router-dom'
-import Home from './pages/home/Home';
-import Create from './pages/create/Create';
-import Recipe from './pages/recipe/Recipe';
-import Search from './pages/search/Search';
-import Navbar from './components/Navbar/Navbar';
-import ModeSelector from './components/ModeSelector/ModeSelector';
-import { useTheme } from './api/hooks/useTheme';
+import React from "react";
+import "./App.css";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+import Home from "./pages/home/Home";
+import Create from "./pages/create/Create";
+import Recipe from "./pages/recipe/Recipe";
+import Search from "./pages/search/Search";
+import Navbar from "./components/Navbar/Navbar";
+import ModeSelector from "./components/ModeSelector/ModeSelector";
+import { useTheme } from "./api/hooks/useTheme";
+import Registration from "./pages/registration/Registration";
 
 function App() {
-
-  const { themeStyle } = useTheme()
+  const { themeStyle } = useTheme();
   return (
     <div className={`App + ${themeStyle.mode}`}>
       <BrowserRouter>
         <Navbar />
         <ModeSelector />
         <Switch>
-          <Route exact path='/' >
+          <Route exact path="/">
             <Home />
           </Route>
-          <Route path='/create'>
+          <Route path="/create">
             <Create />
           </Route>
-          <Route path='/recipes/:id'>
+          <Route path="/recipes/:id">
             <Recipe />
           </Route>
-          <Route path='/search'>
+          <Route path="/search">
             <Search />
+          </Route>
+          <Route path="/registration">
+            <Registration />
           </Route>
         </Switch>
       </BrowserRouter>

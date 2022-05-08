@@ -3,11 +3,13 @@ import { IRecipe } from "../../api/recipes/Recipe";
 import RecipeList from "../../components/RecipeList/RecipeList";
 import { projectFirestore } from "../../firebase/config";
 import { useEffect, useState } from "react";
+import { useAuth } from "../../api/hooks/useAuth";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIserror] = useState(false);
   const [recipes, setRecipes] = useState<IRecipe[] | undefined>();
+  const { authState } = useAuth();
 
   useEffect(() => {
     setIsLoading(true);
@@ -32,12 +34,17 @@ export default function Home() {
     );
 
     return () => unsub();
-  }, []);
+  }, [authState]);
   return (
     <div>
-      {isLoading && <p className="loading">Loading recipes...</p>}
-      {isError && <p className="error">'Failed To Load Recipes'</p>}
-      {recipes && <RecipeList recipes={recipes} />}
+      {!authState.user && <p>Log in to get started</p>}
+      {isLoading && authState.user && (
+        <p className="loading">Loading recipes...</p>
+      )}
+      {isError && authState.user && (
+        <p className="error">'Failed To Load Recipes'</p>
+      )}
+      {recipes && authState.user && <RecipeList recipes={recipes} />}
     </div>
   );
 }
