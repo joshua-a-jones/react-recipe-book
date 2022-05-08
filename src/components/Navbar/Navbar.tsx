@@ -1,5 +1,5 @@
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Searchbar from "../Searchbar/Searchbar";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useTheme } from "../../api/hooks/useTheme";
@@ -13,6 +13,7 @@ export default function Navbar() {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const { authState } = useAuth();
+  const history = useHistory();
 
   const handleCloseLoginModal = () => {
     setIsLoginModalOpen(false);
@@ -23,6 +24,7 @@ export default function Navbar() {
 
   const handleLogoutClick = () => {
     projectAuth.signOut();
+    history.go(0);
   };
 
   console.log(projectAuth.currentUser);
