@@ -19,6 +19,11 @@ export default function Navbar() {
     setIsHamburgerOpen(!isHamburgerOpen);
   };
 
+  const handleSignInClick = () => {
+    setIsLoginModalOpen(true);
+    setIsHamburgerOpen(false);
+  };
+
   return (
     <>
       <div className="navbar">
@@ -28,10 +33,7 @@ export default function Navbar() {
           </Link>
           <div className="nav-controls">
             {!authState.user && (
-              <p
-                className="login-button"
-                onClick={() => setIsLoginModalOpen(true)}
-              >
+              <p className="login-button" onClick={handleSignInClick}>
                 Sign In
               </p>
             )}
