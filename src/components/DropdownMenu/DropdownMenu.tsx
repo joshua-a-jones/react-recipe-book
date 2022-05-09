@@ -26,7 +26,9 @@ export function DropdownMenu(props: DropdownMenuProps) {
   return (
     <div className="dropdown-menu">
       <ul>
-        <li onClick={() => setShowSearchbar(!showSearchbar)}>Search</li>
+        {authState.user && (
+          <li onClick={() => setShowSearchbar(!showSearchbar)}>Search</li>
+        )}
         {showSearchbar && (
           <li>
             <Searchbar />
