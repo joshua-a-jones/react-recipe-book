@@ -32,11 +32,13 @@ export function DropdownMenu(props: DropdownMenuProps) {
             <Searchbar />
           </li>
         )}
-        <li>
-          <Link onClick={toggleMenu} to="/create">
-            Create Recipe
-          </Link>
-        </li>
+        {authState.user && (
+          <li>
+            <Link onClick={toggleMenu} to="/create">
+              Create Recipe
+            </Link>
+          </li>
+        )}
         <li>
           <ModeSelector />
         </li>
@@ -45,6 +47,13 @@ export function DropdownMenu(props: DropdownMenuProps) {
             <p className="logout-button" onClick={handleLogoutClick}>
               Sign Out
             </p>
+          </li>
+        )}
+        {!authState.user && (
+          <li>
+            <Link onClick={toggleMenu} to="/registration">
+              Register New Account
+            </Link>
           </li>
         )}
       </ul>
