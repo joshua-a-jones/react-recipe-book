@@ -19,6 +19,7 @@ export default function Home() {
       (snapshot) => {
         if (snapshot.empty) {
           setIsLoading(false);
+          setIserror(false);
         } else {
           let results: IRecipe[] = [];
           snapshot.docs.forEach((doc) => {

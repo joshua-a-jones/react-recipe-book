@@ -22,6 +22,7 @@ export default function RecipeList(props: RecipeListProps) {
     try {
       projectFirestore.collection("recipes").doc(id).delete();
     } catch (error) {
+      // TODO: add some error handling
       console.log(error);
     }
   };

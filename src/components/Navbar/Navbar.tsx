@@ -19,7 +19,6 @@ export default function Navbar() {
     setIsHamburgerOpen(!isHamburgerOpen);
   };
 
-  console.log(projectAuth.currentUser);
   return (
     <>
       <div className="navbar">

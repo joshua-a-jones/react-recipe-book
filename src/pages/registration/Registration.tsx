@@ -14,7 +14,6 @@ export default function Registration() {
     e.preventDefault();
 
     projectAuth.createUserWithEmailAndPassword(email, password).then((cred) => {
-      console.log(cred.user);
       history.push("/");
     });
   };
