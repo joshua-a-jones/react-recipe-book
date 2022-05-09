@@ -75,11 +75,6 @@ export default function LoginModal(props: LoginModalProps) {
         <Link onClick={props.handleClickCloseButton} to="/registration">
           Click here to register
         </Link>{" "}
-        <br></br>
-        <span>Forgot your password? </span>
-        <Link onClick={props.handleClickCloseButton} to="/">
-          Click here to reset it.
-        </Link>
       </div>
     </div>
   );

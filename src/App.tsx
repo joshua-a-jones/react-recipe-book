@@ -6,7 +6,6 @@ import Create from "./pages/create/Create";
 import Recipe from "./pages/recipe/Recipe";
 import Search from "./pages/search/Search";
 import Navbar from "./components/Navbar/Navbar";
-import ModeSelector from "./components/ModeSelector/ModeSelector";
 import { useTheme } from "./api/hooks/useTheme";
 import Registration from "./pages/registration/Registration";
 
@@ -16,7 +15,6 @@ function App() {
     <div className={`App + ${themeStyle.mode}`}>
       <BrowserRouter>
         <Navbar />
-        <ModeSelector />
         <Switch>
           <Route exact path="/">
             <Home />

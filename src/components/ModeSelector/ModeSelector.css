@@ -1,18 +1,8 @@
 .mode-selector {
-    display: flex;
-    align-items: center;
-    margin: 20px auto;
+  display: flex;
+  align-items: center;
 }
 
-.mode-toggle {
-    cursor: pointer;
-    margin-left: 15px;
-}
-
-.mode-toggle.dark {
-    color: white;
-}
-
-.mode-toggle.light {
-    color: black;
+.mode-selector span {
+  margin-right: 8px;
 }

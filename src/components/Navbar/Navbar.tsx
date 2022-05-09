@@ -1,30 +1,22 @@
 import "./Navbar.css";
-import { Link, useHistory } from "react-router-dom";
-import Searchbar from "../Searchbar/Searchbar";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { useTheme } from "../../api/hooks/useTheme";
+import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import LoginModal from "../LoginModal/LoginModal";
 import { useAuth } from "../../api/hooks/useAuth";
 import { projectAuth } from "../../firebase/config";
+import { DropdownMenu } from "../DropdownMenu/DropdownMenu";
 
 export default function Navbar() {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const { authState } = useAuth();
-  const history = useHistory();
 
   const handleCloseLoginModal = () => {
     setIsLoginModalOpen(false);
   };
   const handleHamburgerClick = () => {
     setIsHamburgerOpen(!isHamburgerOpen);
-  };
-
-  const handleLogoutClick = () => {
-    projectAuth.signOut();
-    history.go(0);
   };
 
   console.log(projectAuth.currentUser);
@@ -44,24 +36,16 @@ export default function Navbar() {
                 Sign In
               </p>
             )}
-            {authState.user && (
-              <p className="logout-button" onClick={handleLogoutClick}>
-                Sign Out
-              </p>
-            )}
             <GiHamburgerMenu
               className="hamburger-button"
               onClick={handleHamburgerClick}
             />
           </div>
         </nav>
-        {isHamburgerOpen && (
-          <div className="hamburger-menu">
-            <Searchbar />
-            <Link to="/create">Create Recipe</Link>
-          </div>
-        )}
       </div>
+      {isHamburgerOpen && (
+        <DropdownMenu toggleMenu={() => setIsHamburgerOpen(false)} />
+      )}
       {isLoginModalOpen && (
         <LoginModal handleClickCloseButton={handleCloseLoginModal} />
       )}
