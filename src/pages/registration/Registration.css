@@ -38,3 +38,41 @@
 .registration-form-container.dark {
   color: #fff;
 }
+
+/*Dark Mode styles */
+
+.registration.dark h2 {
+  color: white;
+}
+
+.registration.dark p,
+.registration.dark span {
+  color: #e4e4e4;
+}
+
+.registration.dark textarea,
+.registration.dark input {
+  background: #555;
+  color: #e4e4e4;
+}
+
+/*Media query for small screens */
+@media only screen and (max-width: 600px) {
+  .registration {
+    margin: 2.5% auto;
+    padding: 0 5px 0 5px;
+  }
+  .registration input,
+  .registration textarea {
+    max-width: 95%;
+  }
+
+  .registration form {
+    padding-left: 5%;
+    padding-right: 0%;
+  }
+
+  .page-title {
+    margin: 10px auto;
+  }
+}
