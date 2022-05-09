@@ -43,13 +43,15 @@ export default function Home() {
       {!authState.user && (
         <MessageCard>
           <h2>Welcome to your recipe book!</h2>
-          <p>Sign in to get started</p>
+          <p>
+            <span>Sign in</span> to get started
+          </p>
         </MessageCard>
       )}
       {isLoading && authState.user && (
         <p className="loading">Loading recipes...</p>
       )}
-      {isError && authState.user && (
+      {isError && !isLoading && authState.user && (
         <p className="error">'Failed To Load Recipes'</p>
       )}
       {recipes && authState.user && <RecipeList recipes={recipes} />}
