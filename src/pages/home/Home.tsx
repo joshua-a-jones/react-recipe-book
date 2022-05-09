@@ -4,6 +4,8 @@ import RecipeList from "../../components/RecipeList/RecipeList";
 import { projectFirestore } from "../../firebase/config";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../api/hooks/useAuth";
+import { Link } from "react-router-dom";
+import { MessageCard } from "../../components/MessageCard/MessageCard";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,7 +18,6 @@ export default function Home() {
     const unsub = projectFirestore.collection("recipes").onSnapshot(
       (snapshot) => {
         if (snapshot.empty) {
-          setIserror(true);
           setIsLoading(false);
         } else {
           let results: IRecipe[] = [];
@@ -25,6 +26,7 @@ export default function Home() {
           });
           setIsLoading(false);
           setRecipes(results);
+          setIserror(false);
         }
       },
       (error) => {
@@ -45,6 +47,14 @@ export default function Home() {
         <p className="error">'Failed To Load Recipes'</p>
       )}
       {recipes && authState.user && <RecipeList recipes={recipes} />}
+      {!recipes && !isLoading && authState.user && !isError && (
+        <MessageCard>
+          <p>
+            Looks like you don't have any recipes yet.{" "}
+            <Link to="/create">Create a new recipe</Link> to get started!
+          </p>
+        </MessageCard>
+      )}
     </div>
   );
 }

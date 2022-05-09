@@ -1,0 +1,14 @@
+.message-card {
+  display: flex;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #555;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.message-card.dark {
+  background-color: #555;
+  color: #fff;
+}
