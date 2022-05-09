@@ -27,7 +27,11 @@ export default function Navbar() {
     <>
       <div className="navbar">
         <nav>
-          <Link to="/" className="logo">
+          <Link
+            onClick={() => setIsHamburgerOpen(false)}
+            to="/"
+            className="logo"
+          >
             <h1>My Recipe Book</h1>
           </Link>
           <div className="nav-controls">
