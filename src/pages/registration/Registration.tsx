@@ -35,11 +35,11 @@ export default function Registration() {
   };
 
   return (
-    <div className={`registration-form-container ${themeStyle.mode}`}>
-      <h2>Create a new Account</h2>
-      <form className="registration-form" onSubmit={handleFormSubmit}>
+    <div className={`registration ${themeStyle.mode}`}>
+      <h2 className="page-title">Create a new Account</h2>
+      <form onSubmit={handleFormSubmit}>
         <label>
-          <span>Email</span>
+          <span>Email:</span>
           <input
             id="email-input"
             type="email"
@@ -49,7 +49,7 @@ export default function Registration() {
           />
         </label>
         <label>
-          <span>Password</span>
+          <span>Password:</span>
           <input
             id="password-input"
             type="password"

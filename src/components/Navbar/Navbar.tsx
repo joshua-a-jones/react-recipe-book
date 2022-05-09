@@ -4,7 +4,6 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import LoginModal from "../LoginModal/LoginModal";
 import { useAuth } from "../../api/hooks/useAuth";
-import { projectAuth } from "../../firebase/config";
 import { DropdownMenu } from "../DropdownMenu/DropdownMenu";
 
 export default function Navbar() {

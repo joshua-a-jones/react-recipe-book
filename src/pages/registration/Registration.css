@@ -1,17 +1,28 @@
-h2 {
+.registration {
+  color: #555;
+  max-width: 480px;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.registration h2 {
   text-align: center;
 }
 
-.registration-form {
-  max-width: 600px;
-  margin: 30px auto;
+.registration form {
   height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.registration-form button {
+.registration label span {
+  display: block;
+  margin: 20px 0 8px 0;
+}
+
+.registration button {
   width: 120px;
   font-size: 1em;
   color: #fff;
@@ -21,6 +32,7 @@ h2 {
   background-color: #58249c;
   cursor: pointer;
   text-decoration: none;
+  margin-top: 20px;
 }
 
 .registration-form-container.dark {
