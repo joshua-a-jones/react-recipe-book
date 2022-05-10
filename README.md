@@ -1,4 +1,9 @@
-# Getting Started with Create React App
+# Recipe Book
+
+This app is a simple recipe library where users can log in to create, update, and delete recipes from a private recipe book.
+The app was created using React and TypeScript for the front-end, and Google Firebase for the database and user authentication.
+
+You can visit and try out the app deployed on Netlify [here](https://recipe-library.netlify.app) (feel free to make an account!)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -38,9 +43,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
