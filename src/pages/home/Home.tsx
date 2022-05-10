@@ -40,7 +40,7 @@ export default function Home() {
   }, [authState]);
   return (
     <div>
-      {!authState.user && (
+      {!authState.user && !isLoading && (
         <MessageCard>
           <h2>Welcome to your recipe book!</h2>
           <p>

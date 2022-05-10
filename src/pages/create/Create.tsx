@@ -4,6 +4,7 @@ import { IRecipe } from "../../api/recipes/Recipe";
 import { useHistory } from "react-router-dom";
 import { useTheme } from "../../api/hooks/useTheme";
 import { projectFirestore } from "../../firebase/config";
+import { useAuth } from "../../api/hooks/useAuth";
 
 export default function Create() {
   const [title, setTitle] = useState("");
@@ -15,6 +16,7 @@ export default function Create() {
   const ingredientInput = useRef<HTMLInputElement>(null);
   const history = useHistory();
   const [isError, setIserror] = useState(false);
+  const { authState } = useAuth();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,6 +26,7 @@ export default function Create() {
       method,
       cookingTime: cookingTime + " minutes",
       ingredients,
+      author_uid: authState.user?.uid,
     };
 
     try {

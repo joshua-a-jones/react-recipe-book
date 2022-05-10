@@ -4,4 +4,5 @@ export interface IRecipe {
   ingredients: string[];
   method: string;
   cookingTime: string;
+  author_uid?: string;
 }
