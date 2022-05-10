@@ -14,8 +14,8 @@ export default function Home() {
   const { authState } = useAuth();
 
   useEffect(() => {
-    setIsLoading(true);
     if (authState.user) {
+      setIsLoading(true);
       return projectFirestore
         .collection(`users/${authState.user.uid}/recipes`)
         .onSnapshot(
@@ -39,7 +39,10 @@ export default function Home() {
           }
         );
     }
+    setRecipes(undefined);
+    setIsLoading(false);
   }, [authState]);
+
   return (
     <div>
       {!authState.user && !isLoading && (
