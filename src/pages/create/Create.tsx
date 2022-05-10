@@ -30,8 +30,12 @@ export default function Create() {
     };
 
     try {
-      await projectFirestore.collection("recipes").add(recipe);
+      await projectFirestore
+        .collection(`users/${authState.user?.uid}/recipes`)
+        .add(recipe);
+
       setIserror(false);
+
       history.push("/");
     } catch (error) {
       setIserror(true);

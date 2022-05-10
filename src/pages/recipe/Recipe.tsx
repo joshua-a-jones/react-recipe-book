@@ -6,6 +6,7 @@ import { projectFirestore } from "../../firebase/config";
 import { useState, useEffect } from "react";
 import EditRecipeForm from "../../components/EditRecipeForm/EditRecipeForm";
 import { MdEdit } from "react-icons/md";
+import { useAuth } from "../../api/hooks/useAuth";
 
 export default function Recipe() {
   const { themeStyle } = useTheme();
@@ -15,12 +16,13 @@ export default function Recipe() {
   const [isError, setIserror] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [recipe, setRecipe] = useState<IRecipe | undefined>();
+  const { authState } = useAuth();
 
   useEffect(() => {
     setIsLoading(true);
 
-    const unsub = projectFirestore
-      .collection("recipes")
+    return projectFirestore
+      .collection(`users/${authState.user?.uid}/recipes`)
       .doc(id)
       .onSnapshot((doc) => {
         if (!doc.exists) {
@@ -31,12 +33,13 @@ export default function Recipe() {
           setIsLoading(false);
         }
       });
-
-    return unsub;
-  }, [id]);
+  }, [id, authState]);
 
   const onSaveEdit = (newRecipe: IRecipe) => {
-    projectFirestore.collection("recipes").doc(id).update(newRecipe);
+    projectFirestore
+      .collection(`users/${authState.user?.uid}/recipes`)
+      .doc(id)
+      .update(newRecipe);
     setIsEditing(false);
   };
 

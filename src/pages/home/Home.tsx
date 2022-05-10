@@ -15,28 +15,30 @@ export default function Home() {
 
   useEffect(() => {
     setIsLoading(true);
-    const unsub = projectFirestore.collection("recipes").onSnapshot(
-      (snapshot) => {
-        if (snapshot.empty) {
-          setIsLoading(false);
-          setIserror(false);
-        } else {
-          let results: IRecipe[] = [];
-          snapshot.docs.forEach((doc) => {
-            results.push({ id: doc.id, ...doc.data() } as IRecipe);
-          });
-          setIsLoading(false);
-          setRecipes(results);
-          setIserror(false);
-        }
-      },
-      (error) => {
-        setIserror(true);
-        setIsLoading(false);
-      }
-    );
-
-    return () => unsub();
+    if (authState.user) {
+      return projectFirestore
+        .collection(`users/${authState.user.uid}/recipes`)
+        .onSnapshot(
+          (snapshot) => {
+            if (snapshot.empty) {
+              setIsLoading(false);
+              setIserror(false);
+            } else {
+              let results: IRecipe[] = [];
+              snapshot.docs.forEach((doc) => {
+                results.push({ id: doc.id, ...doc.data() } as IRecipe);
+              });
+              setIsLoading(false);
+              setRecipes(results);
+              setIserror(false);
+            }
+          },
+          (error) => {
+            setIserror(true);
+            setIsLoading(false);
+          }
+        );
+    }
   }, [authState]);
   return (
     <div>
