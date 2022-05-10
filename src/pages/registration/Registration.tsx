@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useTheme } from "../../api/hooks/useTheme";
-import { projectAuth } from "../../firebase/config";
+import { projectAuth, projectFirestore } from "../../firebase/config";
 import "./Registration.css";
 
 export default function Registration() {
@@ -19,8 +19,11 @@ export default function Registration() {
       projectAuth
         .createUserWithEmailAndPassword(email, password)
         .then((cred) => {
-          history.push("/");
-        });
+          return projectFirestore.collection("users").doc(cred.user?.uid).set({
+            email,
+          });
+        })
+        .then(() => history.push("/"));
     }
   };
 
