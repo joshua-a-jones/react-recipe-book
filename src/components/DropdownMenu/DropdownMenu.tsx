@@ -17,10 +17,10 @@ export function DropdownMenu(props: DropdownMenuProps) {
   const history = useHistory();
 
   const handleLogoutClick = () => {
-    projectAuth.signOut();
-    history.push("/");
-    history.go(0);
-    toggleMenu();
+    projectAuth.signOut().then(() => {
+      history.push("/");
+      toggleMenu();
+    });
   };
 
   return (

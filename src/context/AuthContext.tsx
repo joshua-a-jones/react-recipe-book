@@ -15,7 +15,7 @@ export const AuthContext = createContext<IAuthContext | undefined>(undefined);
 
 export type AuthAction = {
   type: AuthActions;
-  payload: firebase.User;
+  payload: firebase.User | null;
 };
 
 enum AuthActions {
@@ -46,12 +46,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     projectAuth.onAuthStateChanged((user) => {
-      if (user) {
-        dispatch({
-          type: AuthActions.SET_USER,
-          payload: user,
-        });
-      }
+      dispatch({
+        type: AuthActions.SET_USER,
+        payload: user,
+      });
     });
   }, []);
 
