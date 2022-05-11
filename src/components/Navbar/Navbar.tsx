@@ -5,11 +5,13 @@ import { useState } from "react";
 import LoginModal from "../LoginModal/LoginModal";
 import { useAuth } from "../../api/hooks/useAuth";
 import { DropdownMenu } from "../DropdownMenu/DropdownMenu";
+import { useUserProfile } from "../../api/hooks/useUserProfile";
 
 export default function Navbar() {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const { authState } = useAuth();
+  const { userProfile } = useUserProfile();
 
   const handleCloseLoginModal = () => {
     setIsLoginModalOpen(false);
@@ -32,7 +34,9 @@ export default function Navbar() {
             to="/"
             className="logo"
           >
-            <h1>My Recipe Book</h1>
+            <h1>
+              {userProfile?.name ? `${userProfile.name}'s` : "My"} Recipe Book
+            </h1>
           </Link>
           <div className="nav-controls">
             {!authState.user && (

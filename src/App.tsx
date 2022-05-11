@@ -8,6 +8,7 @@ import Search from "./pages/search/Search";
 import Navbar from "./components/Navbar/Navbar";
 import { useTheme } from "./api/hooks/useTheme";
 import Registration from "./pages/registration/Registration";
+import { Profile } from "./pages/profile/Profile";
 
 function App() {
   const { themeStyle } = useTheme();
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/registration">
             <Registration />
+          </Route>
+          <Route path="/profile">
+            <Profile />
           </Route>
         </Switch>
       </BrowserRouter>
