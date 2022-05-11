@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../api/hooks/useAuth";
 import { Link } from "react-router-dom";
 import { MessageCard } from "../../components/MessageCard/MessageCard";
+import { Spinner } from "../../components/Spinner/Spinner";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -44,7 +45,7 @@ export default function Home() {
   }, [authState]);
 
   return (
-    <div>
+    <div style={{ height: "90vh" }}>
       {!authState.user && !isLoading && (
         <MessageCard>
           <h2>Welcome to your recipe book!</h2>
@@ -53,9 +54,7 @@ export default function Home() {
           </p>
         </MessageCard>
       )}
-      {isLoading && authState.user && (
-        <p className="loading">Loading recipes...</p>
-      )}
+      {isLoading && <Spinner />}
       {isError && !isLoading && authState.user && (
         <p className="error">'Failed To Load Recipes'</p>
       )}
